@@ -65,6 +65,8 @@ return {
 					fg = colors.comment,
 				}
 
+				highlights.Type = {}
+
 				highlights["LspReferenceText"] = {
 					bg = colors.bg_highlight,
 				}
@@ -85,16 +87,8 @@ return {
 					fg = "#ff9cae",
 				}
 
-				highlights["@lsp.type.enum"] = {
-					fg = colors.green1,
-				}
-
-				highlights.Type = {
-					fg = "#ffcc66",
-				}
-
 				highlights.Special = {
-					fg = colors.cyan,
+					fg = "#6cd0c8",
 				}
 
 				highlights.BlinkCmpLabelDescription = {
@@ -107,6 +101,18 @@ return {
 
 				highlights["@lsp.type.function"] = {
 					fg = colors.blue,
+				}
+
+				highlights["@lsp.type.enum"] = {
+					fg = "#f7768e",
+				}
+
+				highlights["@lsp.type.struct"] = {
+					fg = "#ffdf82",
+				}
+
+				highlights["@lsp.type.struct.rust"] = {
+					link = "@lsp.type.struct",
 				}
 
 				highlights["@lsp.typemod.macro.defaultLibrary.rust"] = {
@@ -133,24 +139,22 @@ return {
 					link = nil,
 				}
 
-				highlights["@lsp.typemod.struct.defaultLibrary.rust"] = {
-					link = nil,
-				}
-
 				highlights["@lsp.typemod.enum.defaultLibrary.rust"] = {
 					link = nil,
 				}
 
-				highlights["@lsp.type.struct.rust"] = {
-					link = "@type.builtin",
-				}
-
-				highlights["@lsp.type.struct.rust"] = {
-					link = "Type",
-				}
-
 				highlights["@lsp.typemod.enumMember.defaultLibrary.rust"] = {
 					link = nil,
+				}
+
+				highlights["@lsp.typemod.struct.defaultLibrary.rust"] = {}
+
+				highlights["@constant.builtin"] = {
+					link = "@constant",
+				}
+
+				highlights.LazyReasonPlugin = {
+					fg = colors.blue,
 				}
 			end,
 		})
