@@ -72,7 +72,7 @@ return {
 				}
 
 				highlights.PreProc = {
-					fg = colors.green1,
+					fg = "#56c2d6",
 				}
 
 				highlights["@keyword.import"] = {
@@ -97,7 +97,7 @@ return {
 				}
 
 				highlights["@lsp.type.method"] = {
-					fg = "#56c2d6",
+					link = nil,
 				}
 
 				highlights["@lsp.type.function"] = {
@@ -114,6 +114,10 @@ return {
 
 				highlights["@lsp.type.struct.rust"] = {
 					link = "@lsp.type.struct",
+				}
+
+				highlights["@lsp.type.derive.rust"] = {
+					fg = colors.teal,
 				}
 
 				highlights["@lsp.typemod.macro.defaultLibrary.rust"] = {
@@ -133,6 +137,10 @@ return {
 				}
 
 				highlights["@lsp.typemod.function.defaultLibrary.lua"] = {
+					link = nil,
+				}
+
+				highlights["@lsp.typemod.function.defaultLibrary.rust"] = {
 					link = nil,
 				}
 
