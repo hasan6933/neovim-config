@@ -84,7 +84,8 @@ return {
 				}
 
 				highlights["@type.builtin"] = {
-					fg = "#ff9cae",
+					fg = "#56c2d6",
+					-- fg = "#ff99ae",
 				}
 
 				highlights.Special = {
@@ -96,7 +97,7 @@ return {
 				}
 
 				highlights["@lsp.type.method"] = {
-					fg = colors.blue1,
+					fg = "#56c2d6",
 				}
 
 				highlights["@lsp.type.function"] = {
