@@ -97,6 +97,10 @@ return {
 					fg = colors.cyan,
 				}
 
+				highlights.BlinkCmpLabelDescription = {
+					fg = colors.comment,
+				}
+
 				highlights["@lsp.type.method"] = {
 					fg = colors.blue1,
 				}
