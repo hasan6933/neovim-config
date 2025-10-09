@@ -11,7 +11,6 @@ return {
 			if #clients == 0 then
 				return ""
 			end
-
 			-- Define your preferred LSP servers (order affects display priority)
 			local preferred_servers = require("mason-lspconfig").get_installed_servers()
 

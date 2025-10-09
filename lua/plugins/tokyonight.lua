@@ -65,8 +65,6 @@ return {
 					fg = colors.comment,
 				}
 
-				highlights.Type = {}
-
 				highlights["LspReferenceText"] = {
 					bg = colors.bg_highlight,
 				}
@@ -114,6 +112,10 @@ return {
 
 				highlights["@lsp.type.struct.rust"] = {
 					link = "@lsp.type.struct",
+				}
+
+				highlights["@lsp.type.interface"] = {
+					fg = "#ffe0b0",
 				}
 
 				highlights["@lsp.type.derive.rust"] = {
