@@ -111,7 +111,7 @@ return {
 				}
 
 				highlights["@lsp.type.struct"] = {
-					fg = "#ffdf82",
+					fg = "#8AD9F9",
 				}
 
 				highlights["@lsp.type.struct.rust"] = {
@@ -119,7 +119,7 @@ return {
 				}
 
 				highlights["@lsp.type.interface"] = {
-					fg = "#ffe0b0",
+					fg = "#FCCCC7",
 				}
 
 				highlights["@lsp.type.derive.rust"] = {
