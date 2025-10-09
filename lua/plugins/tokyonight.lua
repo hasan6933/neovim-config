@@ -102,6 +102,10 @@ return {
 					fg = colors.blue,
 				}
 
+				highlights["@lsp.type.property.rust"] = {
+					fg = "#8AD2C0",
+				}
+
 				highlights["@lsp.type.enum"] = {
 					fg = "#f7768e",
 				}
