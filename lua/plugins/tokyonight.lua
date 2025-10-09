@@ -111,7 +111,7 @@ return {
 				}
 
 				highlights["@lsp.type.struct"] = {
-					fg = "#8AD9F9",
+					fg = "#FFE893",
 				}
 
 				highlights["@lsp.type.struct.rust"] = {
