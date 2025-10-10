@@ -98,6 +98,11 @@ return {
 					link = nil,
 				}
 
+				highlights["@lsp.typemod.variable.mutable.rust"] = {
+					underline = true,
+					fg = "#AED6CF",
+				}
+
 				highlights["@lsp.type.function"] = {
 					fg = colors.blue,
 				}

@@ -62,7 +62,6 @@ return {
 						max_height = 18,
 						winblend = 0,
 						scrolloff = 0,
-						auto_show_delay_ms = 0,
 						border = "double",
 						draw = {
 							gap = 2,
@@ -81,7 +80,6 @@ return {
 					documentation = {
 						auto_show = true,
 						treesitter_highlighting = true,
-						auto_show_delay_ms = 0,
 						window = {
 							min_width = 40,
 							max_width = 40,
