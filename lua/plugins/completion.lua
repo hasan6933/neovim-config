@@ -64,10 +64,8 @@ return {
 						scrolloff = 0,
 						border = "double",
 						draw = {
-							gap = 2,
 							padding = 1,
-							align_to = "cursor",
-							treesitter = { "lsp" },
+							gap = 2,
 						},
 					},
 					list = {
