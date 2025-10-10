@@ -98,6 +98,10 @@ return {
 					link = nil,
 				}
 
+				highlights["@lsp.typemod.class.defaultLibrary"] = {
+					fg = "#FFE194",
+				}
+
 				highlights["@lsp.typemod.variable.mutable.rust"] = {
 					underline = true,
 					fg = "#CCDCFB",
