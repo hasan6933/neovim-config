@@ -100,7 +100,7 @@ return {
 
 				highlights["@lsp.typemod.variable.mutable.rust"] = {
 					underline = true,
-					fg = "#AED6CF",
+					fg = "#D9EAFD",
 				}
 
 				highlights["@lsp.type.function"] = {
