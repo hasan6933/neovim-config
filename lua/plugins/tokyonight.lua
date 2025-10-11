@@ -61,6 +61,10 @@ return {
 					global_link = 0,
 				}
 
+				highlights.LazyButtonActive = {
+					bg = "#1A3A4E",
+				}
+
 				highlights.NvimTreeIndentMarker = {
 					fg = colors.comment,
 				}
@@ -83,7 +87,6 @@ return {
 
 				highlights["@type.builtin"] = {
 					fg = "#56c2d6",
-					-- fg = "#ff99ae",
 				}
 
 				highlights.Special = {
