@@ -16,7 +16,6 @@ vim.opt.listchars = {
 }
 
 vim.o.signcolumn = "yes:2"
-
 vim.diagnostic.config({
 	underline = true,
 	virtual_text = {
