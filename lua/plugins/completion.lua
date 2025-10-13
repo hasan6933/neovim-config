@@ -142,6 +142,18 @@ return {
 					default = { "lsp", "lazydev", "path", "snippets", "buffer" },
 
 					providers = {
+						lsp = {
+							async = true,
+						},
+						path = {
+							async = true,
+						},
+						snippets = {
+							async = true,
+						},
+						buffer = {
+							async = true,
+						},
 						lazydev = {
 							name = "LazyDev",
 							module = "lazydev.integrations.blink",
