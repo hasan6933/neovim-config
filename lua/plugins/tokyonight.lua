@@ -98,7 +98,7 @@ return {
 				}
 
 				highlights["@lsp.type.method"] = {
-					link = nil,
+					fg = "#90B8F8",
 				}
 
 				highlights["@lsp.typemod.class.defaultLibrary"] = {
