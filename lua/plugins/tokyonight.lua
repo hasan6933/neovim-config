@@ -75,7 +75,12 @@ return {
 				}
 
 				highlights["@lsp.type.parameter"] = {
+					link = "@variable",
+				}
+
+				highlights["@lsp.type.selfTypeKeyword"] = {
 					fg = "#FF8996",
+					link = nil,
 				}
 
 				highlights.PreProc = {
