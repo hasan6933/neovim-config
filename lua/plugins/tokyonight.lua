@@ -74,6 +74,10 @@ return {
 					bg = colors.bg_highlight,
 				}
 
+				highlights["@lsp.type.parameter"] = {
+					fg = "#FF8996",
+				}
+
 				highlights.PreProc = {
 					fg = "#56c2d6",
 				}
