@@ -16,6 +16,8 @@ return {
 				"json",
 				"json5",
 				"python",
+				"markdown",
+				"markdown_inline",
 			},
 			modules = {},
 			-- Install parsers synchronously (only applied to `ensure_installed`)
