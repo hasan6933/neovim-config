@@ -6,7 +6,9 @@ return {
 	opts = {},
 	config = function()
 		require("render-markdown").setup({
-			completions = { lsp = { enabled = true } },
+			code = {
+				render_modes = true,
+			},
 		})
 	end,
 }

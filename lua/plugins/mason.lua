@@ -50,6 +50,7 @@ return {
 			"taplo",
 			"ruff",
 			"ty",
+			"marksman",
 		}
 
 		local other_pkg = {
