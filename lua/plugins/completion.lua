@@ -61,6 +61,7 @@ return {
 						min_width = 30,
 						max_height = 18,
 						winblend = 0,
+						auto_show_delay_ms = 0,
 						scrolloff = 0,
 						border = "double",
 						draw = {
