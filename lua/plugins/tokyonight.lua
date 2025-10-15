@@ -28,7 +28,7 @@ return {
 				colors.warning = colors.yellow
 				colors.info = colors.blue
 				colors.hint = colors.green1
-				colors.green = "#D2FBB9"
+				colors.green = "#A7E399"
 			end,
 			on_highlights = function(highlights, colors)
 				highlights.NvimTreeWinSeparator = {
