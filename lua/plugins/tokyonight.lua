@@ -74,10 +74,6 @@ return {
 					bg = colors.bg_highlight,
 				}
 
-				highlights["@lsp.type.parameter"] = {
-					link = "@variable",
-				}
-
 				highlights["@lsp.type.selfTypeKeyword"] = {
 					fg = "#FF8996",
 					link = nil,
