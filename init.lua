@@ -20,7 +20,6 @@ vim.diagnostic.config({
 	underline = true,
 	virtual_text = {
 		hl_mode = "combine",
-		source = true,
 		current_line = nil,
 		prefix = "●", -- Could be '●', '▎', 'x'
 	},
