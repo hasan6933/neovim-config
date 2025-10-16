@@ -42,7 +42,7 @@ return {
 			"html-lsp",
 			"emmet-language-server",
 			"deno",
-			"lua-language-server",
+			"emmylua_ls",
 			"rust-analyzer",
 			"clangd",
 			"json-lsp",
@@ -55,7 +55,6 @@ return {
 
 		local other_pkg = {
 			"biome",
-			"stylua",
 			"uv",
 		}
 		local mpkgs = {}

@@ -2,21 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
-		vim.lsp.config("lua_ls", {
-			settings = {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
-					format = {
-						enable = true,
-					},
-					hint = {
-						enable = true,
-					},
-				},
-			},
-		})
 		vim.lsp.config("rust_analyzer", {
 			capabilities = {
 				experimental = {
