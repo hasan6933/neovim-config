@@ -3,13 +3,10 @@
 	"diagnostics.globals": ["*"],
 	"codeLens.enable": true,
 	"type.inferParamType": true,
-	"runtime.version": "LuaJIT",
+	"runtime.version": "Lua 5.5",
 	"hint": {
 		"awaitPropagate": true,
 		"enable": true,
 		"setType": true
-	},
-	"runtime": {
-		"version": "LuaJIT"
 	}
 }
