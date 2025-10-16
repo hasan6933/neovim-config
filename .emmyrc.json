@@ -1,5 +1,8 @@
 {
 	"$schema": "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/refs/heads/main/crates/emmylua_code_analysis/resources/schema.json",
+	"codeAction": {
+		"insertSpace": true
+	},
 	"hint": {
 		"enable": true,
 		"enumParamHint": true,
@@ -9,15 +12,14 @@
 		"overrideHint": true,
 		"paramHint": true
 	},
-	"codeLens": {
-		"enable": true
-	},
-	"strict": {
-		"arrayIndex": false,
-		"docBaseConstMatchBaseType": false,
-		"metaOverrideFileDefine": false,
-		"requirePath": false,
-		"typeCall": false
+	"diagnostics": {
+		"diagnosticInterval": 0,
+		"disable": [],
+		"enable": true,
+		"enables": [],
+		"globals": ["*"],
+		"globalsRegex": ["*"],
+		"severity": {}
 	},
 	"runtime": {
 		"classDefaultCall": {
@@ -29,20 +31,13 @@
 		"frameworkVersions": [],
 		"nonstandardSymbol": [],
 		"requireLikeFunction": [],
-		"requirePattern": ["?.lua", "?/init.lua", "lib/?.lua"],
+		"requirePattern": [],
 		"special": {},
 		"version": "LuaJIT"
 	},
-
-	"workspace": {
-		"enableReindex": false,
-		"encoding": "utf-8",
-		"ignoreDir": [],
-		"ignoreGlobs": [],
-		"library": ["/usr/share/nvim/runtime/", "$HOME/.local/share/nvim/lazy/"],
-		"moduleMap": [],
-		"preloadFileSize": 0,
-		"reindexDuration": 5000,
-		"workspaceRoots": []
+	"format": {
+		"externalTool": null,
+		"externalToolRangeFormat": null,
+		"useDiff": true
 	}
 }
