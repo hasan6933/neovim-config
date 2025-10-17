@@ -11,16 +11,11 @@ return {
 				".luacheckrc",
 				".git",
 			},
-			workspace_required = true,
+			workspace_required = false,
 			settings = {
 				Lua = {
-					diagnostics = {
-						diagnosticInterval = 0,
-						globals = { "*" },
-						globalsRegex = { "*" },
-					},
 					runtime = {
-						version = "LuaLatest",
+						version = "LuaJIT",
 					},
 				},
 			},
