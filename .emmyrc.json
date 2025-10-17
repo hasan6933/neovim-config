@@ -16,7 +16,7 @@
 	},
 	"diagnostics": {
 		"enable": true,
-		"diagnosticInterval": 100,
+		"diagnosticInterval": 0,
 		"globals": ["*"]
 	},
 	"doc": {
