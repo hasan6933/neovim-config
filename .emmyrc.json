@@ -16,8 +16,8 @@
 	},
 	"diagnostics": {
 		"enable": true,
-		"globalsRegex": ["^*"],
-		"diagnosticInterval": 100
+		"diagnosticInterval": 100,
+		"globals": ["*"]
 	},
 	"doc": {
 		"syntax": "md"
