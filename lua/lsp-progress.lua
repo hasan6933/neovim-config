@@ -77,7 +77,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			work_done = 0,
 			total_work = 0,
 			report_count = 0,
-			start_time = vim.loop.hrtime(),
+			start_time = vim.uv.hrtime(),
 			client_id = ctx.client_id,
 			server_name = server_name,
 		}

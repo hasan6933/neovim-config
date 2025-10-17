@@ -3,9 +3,7 @@
 	"codeAction": {
 		"insertSpace": true
 	},
-	"codeLens": {
-		"enable": true
-	},
+
 	"completion": {
 		"enable": true,
 		"autoRequire": true,
@@ -18,9 +16,8 @@
 	},
 	"diagnostics": {
 		"enable": true,
-		"globals": ["*"],
 		"globalsRegex": ["^*"],
-		"diagnosticInterval": 0
+		"diagnosticInterval": 100
 	},
 	"doc": {
 		"syntax": "md"
