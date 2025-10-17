@@ -2,21 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
-		vim.lsp.config("emmylua_ls", {
-			settings = {
-				Lua = {
-					hint = {
-						paramHint = true,
-						indexHint = true,
-					},
-					diagnostics = {
-						diagnosticInterval = 0,
-						globals = { "*" },
-						globalsRegex = { "^*" },
-					},
-				},
-			},
-		})
 		vim.lsp.config("rust_analyzer", {
 			capabilities = {
 				experimental = {
