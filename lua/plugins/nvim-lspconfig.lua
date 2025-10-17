@@ -5,6 +5,10 @@ return {
 		vim.lsp.config("emmylua_ls", {
 			settings = {
 				Lua = {
+					hint = {
+						paramHint = true,
+						indexHint = true,
+					},
 					diagnostics = {
 						diagnosticInterval = 0,
 						globals = { "*" },
