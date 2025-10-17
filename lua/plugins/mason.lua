@@ -54,6 +54,7 @@ return {
 		}
 
 		local other_pkg = {
+			"stylua",
 			"biome",
 			"uv",
 		}
