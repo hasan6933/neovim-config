@@ -6,14 +6,13 @@ return {
 			cmd = { "emmylua_ls", "--editor", "neovim" },
 			settings = {
 				Lua = {
-					workspace = {
-						library = vim.api.nvim_list_runtime_paths(),
+					diagnostics = {
+						globals = { "*" },
 					},
 				},
 			},
 		})
 		vim.lsp.config("rust_analyzer", {
-			cmd = { "rust-analyzer" },
 			capabilities = {
 				experimental = {
 					commands = {
@@ -87,7 +86,6 @@ return {
 		})
 
 		vim.lsp.config("ruff", {
-			cmd = { "ruff", "server" },
 			init_options = {
 				settings = {
 					-- Ruff language server settings go here
