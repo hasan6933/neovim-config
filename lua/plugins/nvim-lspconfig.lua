@@ -7,7 +7,10 @@ return {
 			settings = {
 				Lua = {
 					workspace = {
-						library = vim.api.nvim_get_runtime_file("*", true),
+						library = {
+							"/usr/share/nvim/runtime/",
+							"~/.local/share/nvim/lazy/",
+						},
 					},
 					diagnostics = {
 						diagnosticsInterval = 100,
