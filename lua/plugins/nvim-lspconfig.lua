@@ -3,16 +3,17 @@ return {
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
 		vim.lsp.config("emmylua_ls", {
+			cmd = { "emmylua_ls", "--editor", "neovim" },
 			settings = {
 				Lua = {
 					workspace = {
-						library = vim.api.nvim_get_runtime_file("*", true),
+						library = vim.api.nvim_list_runtime_paths(),
 					},
 				},
 			},
 		})
-
 		vim.lsp.config("rust_analyzer", {
+			cmd = { "rust-analyzer" },
 			capabilities = {
 				experimental = {
 					commands = {
@@ -86,6 +87,7 @@ return {
 		})
 
 		vim.lsp.config("ruff", {
+			cmd = { "ruff", "server" },
 			init_options = {
 				settings = {
 					-- Ruff language server settings go here
