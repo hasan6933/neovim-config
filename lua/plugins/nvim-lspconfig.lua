@@ -35,6 +35,9 @@ return {
 			},
 			settings = {
 				["rust-analyzer"] = {
+					cachePriming = {
+						numThreads = 255,
+					},
 					completion = {
 						privateEditable = {
 							enable = true,
