@@ -6,8 +6,14 @@ return {
 			cmd = { "emmylua_ls", "--editor", "neovim" },
 			settings = {
 				Lua = {
+					workspace = {
+						library = vim.api.nvim__get_runtime({ "" }, true, {
+							is_lua = true,
+						}),
+					},
 					diagnostics = {
 						globals = { "*" },
+						globalsRegex = { "*" },
 					},
 				},
 			},
