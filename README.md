@@ -1,7 +1,7 @@
 # My personal neovim configuration with LSP, Autocompletion, Git, and many more...
 
 
-[Screenshots]
+## Screenshots
 
 <img src="./src/images/Screenshot_20251021_013648.png">
 
