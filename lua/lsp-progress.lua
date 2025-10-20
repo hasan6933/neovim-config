@@ -65,7 +65,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	if not progress or not progress.kind then
 		return
 	end
-
+	---@type table
 	local cache_entry = progress_cache[token]
 
 	if progress.kind == "begin" then
