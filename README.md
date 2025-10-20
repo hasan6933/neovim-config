@@ -1,1 +1,2 @@
-# My personal neovim config.
+# My personal neovim configuration with LSP, Autocompletion, Git, and many more...
+

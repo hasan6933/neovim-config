@@ -1,7 +1,8 @@
 {
 	"workspace": {
-		"library": [
-			"/usr/share/nvim/runtime/"
-		]
+		"library": ["/usr/share/nvim/runtime/"]
+	},
+	"diagnostics": {
+		"globals": [""]
 	}
 }

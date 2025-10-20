@@ -50,7 +50,7 @@ return {
 			"taplo",
 			"ruff",
 			"ty",
-			"marksman",
+			"markdown-oxide",
 		}
 
 		local other_pkg = {
