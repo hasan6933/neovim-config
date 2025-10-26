@@ -76,7 +76,7 @@ return {
 					enable = true,
 					inline_arrows = true,
 					icons = {
-						corner = "└",
+						corner = "╰",
 						edge = "│",
 						item = "│",
 						bottom = "─",
