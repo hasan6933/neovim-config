@@ -9,13 +9,13 @@ return {
 			"<C-e>",
 			mode = { "n", "i" },
 			function()
-				Snacks.explorer({
+				Snacks.picker.explorer({
 					git_status = true,
 					git_untracked = true,
-					git_status_open = true,
 					diagnostics_open = true,
-					hidden = true,
+					git_status_open = true,
 					ignored = true,
+					hidden = true,
 				})
 			end,
 		},
@@ -52,19 +52,19 @@ return {
 
 		vim.keymap.set("n", "<leader>rn", rename_lsp_symbol, { desc = "Rename symbol via LSP (Snacks)" })
 
-		local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "NvimTreeSetup",
-			callback = function()
-				local events = require("nvim-tree.api").events
-				events.subscribe(events.Event.NodeRenamed, function(data)
-					if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
-						data = data
-						Snacks.rename.on_rename_file(data.old_name, data.new_name)
-					end
-				end)
-			end,
-		})
+		-- local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
+		-- vim.api.nvim_create_autocmd("User", {
+		-- 	pattern = "NvimTreeSetup",
+		-- 	callback = function()
+		-- 		local events = require("nvim-tree.api").events
+		-- 		events.subscribe(events.Event.NodeRenamed, function(data)
+		-- 			if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+		-- 				data = data
+		-- 				Snacks.rename.on_rename_file(data.old_name, data.new_name)
+		-- 			end
+		-- 		end)
+		-- 	end,
+		-- })
 		require("snacks").setup({
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
@@ -116,7 +116,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = false },
+			explorer = { enabled = true },
 			indent = {
 				enabled = true,
 				scope = {
@@ -253,6 +253,7 @@ return {
 					fixbuf = true,
 				},
 				notification = {
+
 					fixbuf = true,
 					border = "double",
 					wo = {
