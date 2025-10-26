@@ -138,10 +138,10 @@ return {
 				enabled = true,
 				icons = {
 					diagnostics = {
-						Error = "  ",
-						Hint = "  ",
-						Warn = "  ",
-						Info = "  ",
+						Error = " ",
+						Hint = " ",
+						Warn = " ",
+						Info = " ",
 					},
 					files = {
 						dir = "",
