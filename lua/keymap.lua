@@ -14,7 +14,9 @@ end)
 vim.keymap.set({ "n", "v", "i" }, "<A-Left>", function()
 	vim.cmd("bprevious")
 end)
-
+vim.keymap.set({ "n", "i", "c", "v" }, "<C-x>", function()
+	vim.cmd("qa!")
+end)
 vim.keymap.set("n", "<leader>fs", function()
 	local fs_process = require("fs.utils.process")
 
