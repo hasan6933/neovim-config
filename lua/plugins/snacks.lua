@@ -6,19 +6,18 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>e",
+			"<C-e>",
+			mode = { "n", "i" },
 			function()
 				Snacks.explorer({
+					git_status = true,
 					git_untracked = true,
 					git_status_open = true,
 					diagnostics_open = true,
-					ui_select = true,
 					hidden = true,
-					notify = true,
 					ignored = true,
 				})
 			end,
-			desc = "File Explorer",
 		},
 		{
 			"<a-t>",
@@ -117,7 +116,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = true, git_status_open = true },
+			explorer = { enabled = false },
 			indent = {
 				enabled = true,
 				scope = {
@@ -210,6 +209,13 @@ return {
 					},
 					ui = {},
 					undo = {},
+				},
+				sources = {
+					explorer = {
+						layout = {
+							auto_hide = { "input" },
+						},
+					},
 				},
 			},
 
