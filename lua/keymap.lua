@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>fs", function()
 
 	-- Check if there are actual files in the directory
 	local has_files = false
-	local uv = vim.uv or vim.loop -- Handle both neovim versions
+	local uv = vim.uv -- Handle both neovim versions
 
 	-- Use vim.fn.readdir() which is more reliable
 	local files = vim.fn.readdir(current_path)
