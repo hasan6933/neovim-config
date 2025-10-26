@@ -70,6 +70,10 @@ return {
 					fg = colors.comment,
 				}
 
+				highlights["SnacksWinSeparator"] = {
+					fg = colors.bg,
+				}
+
 				highlights["LspReferenceText"] = {
 					bg = colors.bg_highlight,
 				}

@@ -6,6 +6,21 @@ return {
 	opts = {},
 	keys = {
 		{
+			"<leader>e",
+			function()
+				Snacks.explorer({
+					git_untracked = true,
+					git_status_open = true,
+					diagnostics_open = true,
+					ui_select = true,
+					hidden = true,
+					notify = true,
+					ignored = true,
+				})
+			end,
+			desc = "File Explorer",
+		},
+		{
 			"<a-t>",
 			mode = { "n", "t", "v" },
 			function()
@@ -102,7 +117,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = false },
+			explorer = { enabled = true, git_status_open = true },
 			indent = {
 				enabled = true,
 				scope = {
@@ -123,10 +138,10 @@ return {
 				enabled = true,
 				icons = {
 					diagnostics = {
-						Error = "",
-						Hint = "",
-						Warn = "",
-						Info = "",
+						Error = "  ",
+						Hint = "  ",
+						Warn = "  ",
+						Info = "  ",
 					},
 					files = {
 						dir = "",
@@ -135,18 +150,18 @@ return {
 						file = "",
 					},
 					keymaps = {
-						nowait = "",
+						nowait = " ",
 					},
 					tree = {},
 					git = {
-						added = "",
-						commit = "",
-						deleted = "",
-						ignored = "",
-						modified = "",
-						renamed = "",
-						staged = "",
-						unmerged = "",
+						added = " ",
+						commit = " ",
+						deleted = " ",
+						ignored = " ",
+						modified = " ",
+						renamed = " ",
+						staged = " ",
+						unmerged = " ",
 					},
 					kinds = {
 						Array = " ",
