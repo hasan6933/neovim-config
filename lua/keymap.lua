@@ -1,5 +1,4 @@
 vim.keymap.set({ "n", "i", "c", "v" }, "<C-s>", "<cmd>w!<CR>")
-vim.keymap.set({ "n", "i", "v", "c" }, "<C-q>", "<cmd>qa<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>qb", "<cmd>BufferClose<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>qw", "<cmd>q<CR>")
 vim.keymap.set("n", "<A-Up>", ":m-2<CR>", { noremap = true, silent = true })
