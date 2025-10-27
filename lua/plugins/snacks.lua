@@ -6,21 +6,6 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<C-e>",
-			mode = { "n", "i", "v", "c" },
-			function()
-				Snacks.picker.explorer({
-					diagnostics_open = true,
-					git_status_open = true,
-					git_untracked = true,
-					watch = true,
-					hidden = true,
-					ignored = true,
-					git_status = true,
-				})
-			end,
-		},
-		{
 			"<a-t>",
 			mode = { "n", "t", "v" },
 			function()
@@ -104,7 +89,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = true },
+			explorer = { enabled = false },
 			indent = {
 				enabled = true,
 				scope = {
