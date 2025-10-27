@@ -207,7 +207,7 @@ return {
 					explorer = {
 						layout = {
 							layout = {
-								width = 40,
+								width = 37,
 							},
 							auto_hide = { "input" },
 						},
