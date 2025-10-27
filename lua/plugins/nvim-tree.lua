@@ -17,7 +17,7 @@ return {
 			auto_reload_on_write = true,
 			disable_netrw = true,
 			hijack_netrw = true,
-			hijack_unnamed_buffer_when_opening = false,
+			hijack_unnamed_buffer_when_opening = true,
 			root_dirs = {},
 			prefer_startup_root = false,
 			sync_root_with_cwd = true,
@@ -41,7 +41,7 @@ return {
 				signcolumn = "no",
 				width = {
 					min = 40,
-					max = 39,
+					max = 40,
 				},
 				float = {
 					enable = false,
