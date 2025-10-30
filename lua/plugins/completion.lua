@@ -65,7 +65,7 @@ return {
 					border = "double",
 					draw = {
 						padding = 1,
-						gap = 2,
+						gap = 1,
 						treesitter = { "lsp" },
 					},
 				},
