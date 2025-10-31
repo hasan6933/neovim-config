@@ -140,18 +140,8 @@ return {
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
-
 				providers = {
 					lsp = {
-						async = true,
-					},
-					path = {
-						async = true,
-					},
-					snippets = {
-						async = true,
-					},
-					buffer = {
 						async = true,
 					},
 				},
