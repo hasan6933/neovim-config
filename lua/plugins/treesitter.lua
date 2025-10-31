@@ -18,6 +18,7 @@ return {
 				"python",
 				"markdown",
 				"markdown_inline",
+				"toml",
 			},
 			modules = {},
 			-- Install parsers synchronously (only applied to `ensure_installed`)
