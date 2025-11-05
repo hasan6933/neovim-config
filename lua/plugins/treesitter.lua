@@ -12,6 +12,7 @@ return {
 				"html",
 				"css",
 				"javascript",
+				"typescript",
 				"jsonc",
 				"json",
 				"json5",
