@@ -21,7 +21,7 @@ vim.diagnostic.config({
 	virtual_text = {
 		hl_mode = "combine",
 		current_line = nil,
-		prefix = "●", -- Could be '●', '▎', 'x'
+		prefix = "● ", -- Could be '●', '▎', 'x'
 	},
 	update_in_insert = true,
 	severity_sort = true,
