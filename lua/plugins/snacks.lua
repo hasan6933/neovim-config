@@ -6,6 +6,22 @@ return {
 	opts = {},
 	keys = {
 		{
+			"<C-g>",
+			mode = { "n", "i", "v", "t" },
+			function()
+				Snacks.terminal.toggle("gitui", {
+					win = {
+						border = "double",
+						title = "  GitUI ",
+						title_pos = "center",
+						width = 0.9,
+						height = 0.8,
+						backdrop = 45,
+					},
+				})
+			end,
+		},
+		{
 			"<a-t>",
 			mode = { "n", "t", "v" },
 			function()
