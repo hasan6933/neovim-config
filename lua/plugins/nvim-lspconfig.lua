@@ -87,11 +87,14 @@ return {
 			end,
 		})
 
-		vim.api.nvim_create_autocmd("BufWritePost", {
+		vim.api.nvim_create_autocmd("BufReadPost", {
 			pattern = "*.lua",
 			callback = function()
-				vim.cmd("e")
+				vim.defer_fn(function()
+					vim.cmd("e")
+				end, 2000)
 			end,
+			once = true,
 		})
 	end,
 }
