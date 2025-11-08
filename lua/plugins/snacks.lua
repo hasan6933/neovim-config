@@ -105,7 +105,7 @@ return {
 					},
 				},
 			},
-			explorer = { enabled = false },
+			explorer = { enabled = true },
 			indent = {
 				enabled = true,
 				scope = {
