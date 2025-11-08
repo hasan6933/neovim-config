@@ -27,10 +27,10 @@ vim.diagnostic.config({
 	severity_sort = true,
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = "", -- Error icon (e.g., from Nerd Fonts)
-			[vim.diagnostic.severity.WARN] = "", -- Warning icon
-			[vim.diagnostic.severity.INFO] = "", -- Info icon
-			[vim.diagnostic.severity.HINT] = "", -- Hint icon
+			[vim.diagnostic.severity.ERROR] = " ", -- Error icon (e.g., from Nerd Fonts)
+			[vim.diagnostic.severity.WARN] = " ", -- Warning icon
+			[vim.diagnostic.severity.INFO] = " ", -- Info icon
+			[vim.diagnostic.severity.HINT] = " ", -- Hint icon
 		},
 	},
 })

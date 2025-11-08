@@ -17,11 +17,9 @@ vim.keymap.set({ "n", "i", "c", "v" }, "<C-s>", "<cmd>w!<CR>")
 vim.keymap.set({ "n", "v", "i" }, "<A-Right>", function()
 	vim.cmd("bnext")
 end)
-<<<<<<< HEAD
 vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
 	vim.cmd("NvimTreeToggle")
 end)
-=======
 vim.keymap.set({ "n", "i", "c", "v" }, "<C-e>", function()
 	Snacks.picker.explorer({
 		git_status = true,
