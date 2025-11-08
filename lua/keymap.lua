@@ -17,9 +17,24 @@ vim.keymap.set({ "n", "i", "c", "v" }, "<C-s>", "<cmd>w!<CR>")
 vim.keymap.set({ "n", "v", "i" }, "<A-Right>", function()
 	vim.cmd("bnext")
 end)
+<<<<<<< HEAD
 vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
 	vim.cmd("NvimTreeToggle")
 end)
+=======
+vim.keymap.set({ "n", "i", "c", "v" }, "<C-e>", function()
+	Snacks.picker.explorer({
+		git_status = true,
+		watch = true,
+		git_untracked = true,
+		ignored = true,
+		hidden = true,
+		diagnostics_open = true,
+		git_status_open = true,
+		show_empty = true,
+	})
+end, { remap = false })
+>>>>>>> main
 vim.keymap.set("n", "<leader>fs", function()
 	local fs_process = require("fs.utils.process")
 
