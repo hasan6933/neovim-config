@@ -4,8 +4,13 @@ return {
 	config = function()
 		vim.lsp.config("emmylua_ls", {
 			settings = {
-				workspace = {
-					library = vim.api.nvim_get_runtime_file(" ", true),
+				["emmylua_ls"] = {
+					workspace = {
+						library = vim.api.nvim_get_runtime_file(" ", true),
+					},
+					diagnostics = {
+						globals = { "*" },
+					},
 				},
 			},
 		})
