@@ -219,10 +219,10 @@ return {
 			notifier = {
 				enabled = true,
 				icons = {
-					debug = "",
-					info = "",
-					error = "",
-					warn = "",
+					debug = " ",
+					info = " ",
+					error = " ",
+					warn = " ",
 				},
 			},
 			quickfile = { enabled = true },
