@@ -86,5 +86,12 @@ return {
 				vim.lsp.codelens.refresh({ bufnr = args.buf })
 			end,
 		})
+
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			pattern = "*.lua",
+			callback = function()
+				vim.cmd("e")
+			end,
+		})
 	end,
 }
