@@ -2,19 +2,52 @@
 -- Enhanced LSP Progress Handler
 -- =================================================================
 
+---@class LspProgressCacheEntry
+---@field spinner_idx integer
+---@field title string
+---@field message string
+---@field percentage number
+---@field work_done integer
+---@field total_work integer|nil
+---@field report_count integer
+---@field start_time number
+---@field client_id integer
+---@field server_name string
+
+---@class LspProgressStatus
+---@field client string
+---@field title string
+---@field percentage number
+---@field message string
+---@field active boolean
+
+---@class LspProgressHandlerModule: table
 local M = {}
+
+---@type string[]
 local spinners = { "◜ ", "◠ ", "◝ ", "◞ ", "◡ ", "◟ " }
+local SPINNER_COUNT = #spinners
+
+---@type table<string|integer, LspProgressCacheEntry>
 local progress_cache = {}
 
+---Show notification using Snacks notifier
+---@param content string
+---@param id string
+---@param is_end boolean
 local function show_notification(content, id, is_end)
 	Snacks.notifier.notify(content, "info", {
 		icon = "",
 		id = id,
-		timeout = is_end and 1800 or 0, -- Changed to 0 for immediate display
+		timeout = is_end and 1800 or 0,
 		title = "LSP Progress",
 	})
 end
 
+---Extract work progress from message string
+---@param message string|nil
+---@return integer|nil done The number of completed items, or nil if not found
+---@return integer|nil total The total number of items, or nil if not found
 local function extract_work_progress(message)
 	if not message then
 		return nil, nil
@@ -22,36 +55,36 @@ local function extract_work_progress(message)
 
 	-- Try different patterns
 	local patterns = {
-		"(%d+)/(%d+)", -- "5/100"
-		"(%d+) of (%d+)", -- "5 of 100"
-		"Processing file (%d+) of (%d+)", -- "Processing file 5 of 100"
+		"^(%d+)/(%d+)", -- "5/100"
+		"^(%d+) of (%d+)", -- "5 of 100"
+		"^Processing file (%d+) of (%d+)", -- "Processing file 5 of 100"
+		"(%d+) items processed", -- "5 items processed"
 	}
 
 	for _, pattern in ipairs(patterns) do
 		local done, total = message:match(pattern)
-		if done and total then
-			return tonumber(done), tonumber(total)
+		if done then
+			-- Fixed: Valid Lua syntax with proper type conversion
+			return tonumber(done), --[[@as integer]]
+				total and tonumber(total) --[[@as integer]]
 		end
-	end
-
-	-- Single number pattern
-	local done_only = message:match("(%d+) items processed")
-	if done_only then
-		return tonumber(done_only), nil
 	end
 
 	return nil, nil
 end
 
+---Clean up notification by ID
+---@param id string
 local function cleanup_notification(id)
-	if pcall(function()
-		return Snacks.notifier
-	end) and Snacks and Snacks.notifier and Snacks.notifier.hide then
+	-- Fixed: Correctly check if Snacks and hide method exist
+	if Snacks and Snacks.notifier and type(Snacks.notifier.hide) == "function" then
 		Snacks.notifier.hide(id)
 	end
 end
 
--- Main LSP progress handler
+---Main LSP progress handler
+---@param result {token: string|integer, value: {kind: "begin"|"report"|"end", title?: string, message?: string, percentage?: number}}
+---@param ctx {client_id: integer}
 vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	local client = vim.lsp.get_client_by_id(ctx.client_id)
 	if not client then
@@ -65,11 +98,11 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	if not progress or not progress.kind then
 		return
 	end
-	---@type table[]
+
 	local cache_entry = progress_cache[token]
 
 	if progress.kind == "begin" then
-		progress_cache[token] = {
+		cache_entry = {
 			spinner_idx = 1,
 			title = progress.title or "",
 			message = progress.message or "",
@@ -81,7 +114,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			client_id = ctx.client_id,
 			server_name = server_name,
 		}
-		cache_entry = progress_cache[token]
+		progress_cache[token] = cache_entry
 
 		-- Extract progress from initial message
 		if progress.message then
@@ -89,9 +122,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			if done and total then
 				cache_entry.work_done = done
 				cache_entry.total_work = total
-				if total > 0 then
-					cache_entry.percentage = math.min((done / total) * 100, 100)
-				end
+				cache_entry.percentage = math.min((done / total) * 100, 100)
 			end
 		end
 
@@ -100,15 +131,17 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 		local spinner = spinners[1]
 		local components = { spinner, "[" .. server_name .. "]" }
 
-		if cache_entry.title and cache_entry.title ~= "" then
-			table.insert(components, cache_entry.title)
+		-- Fixed: Removed redundant nil check
+		if cache_entry.title ~= "" then
+			components[#components + 1] = cache_entry.title
 		end
 
-		if cache_entry.message and cache_entry.message ~= "" then
-			table.insert(components, cache_entry.message)
+		if cache_entry.message ~= "" then
+			components[#components + 1] = cache_entry.message
 		end
 
-		table.insert(components, "(0%)")
+		-- Fixed: Use calculated percentage instead of hardcoded 0%
+		components[#components + 1] = string.format("(%.0f%%)", cache_entry.percentage)
 		local message_content = table.concat(components, " ")
 		show_notification(message_content, notification_id, false)
 	elseif not cache_entry then
@@ -116,8 +149,8 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	end
 
 	if progress.kind == "report" then
-		cache_entry.spinner_idx = (cache_entry.spinner_idx % #spinners) + 1
-		cache_entry.report_count = (cache_entry.report_count or 0) + 1
+		cache_entry.spinner_idx = (cache_entry.spinner_idx % SPINNER_COUNT) + 1
+		cache_entry.report_count = cache_entry.report_count + 1
 
 		if progress.message then
 			cache_entry.message = progress.message
@@ -137,7 +170,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			cache_entry.percentage = progress.percentage
 		else
 			local report_progress = math.min(cache_entry.report_count * 5, 50)
-			local elapsed_ms = (vim.loop.hrtime() - cache_entry.start_time) / 1000000
+			local elapsed_ms = (vim.uv.hrtime() - cache_entry.start_time) / 1000000
 			local time_progress = math.min(elapsed_ms / 600, 50)
 			cache_entry.percentage = math.min(report_progress + time_progress, 99)
 		end
@@ -155,7 +188,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 
 	-- Generate notification content
 	local notification_id = "lsp_progress_" .. tostring(token)
-	local spinner = progress.kind == "end" and "✓ " or (spinners[cache_entry.spinner_idx] or " ")
+	local spinner = progress.kind == "end" and "✓ " or spinners[cache_entry.spinner_idx]
 	local percentage = cache_entry.percentage or 0
 	local message = cache_entry.message
 	local lsp_title = cache_entry.title
@@ -163,16 +196,16 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	local components = { spinner, "[" .. server_name .. "]" }
 
 	if lsp_title and lsp_title ~= "" then
-		table.insert(components, lsp_title)
+		components[#components + 1] = lsp_title
 	end
 
 	if cache_entry.total_work and cache_entry.total_work > 0 then
-		table.insert(components, string.format("%d/%d", cache_entry.work_done, cache_entry.total_work))
+		components[#components + 1] = string.format("%d/%d", cache_entry.work_done, cache_entry.total_work)
 	elseif message and message ~= "" then
-		table.insert(components, message)
+		components[#components + 1] = message
 	end
 
-	table.insert(components, string.format("(%.0f%%)", percentage))
+	components[#components + 1] = string.format("(%.0f%%)", percentage)
 
 	local message_content = table.concat(components, " ")
 
@@ -199,7 +232,8 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	end
 end
 
--- Function to get current progress status
+---Get current progress status
+---@return table<string|integer, LspProgressStatus>
 function M.get_progress_status()
 	local status = {}
 	for token, entry in pairs(progress_cache) do
@@ -214,9 +248,9 @@ function M.get_progress_status()
 	return status
 end
 
--- Function to cleanup all progress
+---Function to cleanup all progress
 function M.cleanup()
-	for token, _ in pairs(progress_cache) do
+	for token in pairs(progress_cache) do
 		progress_cache[token] = nil
 	end
 end
