@@ -2,6 +2,15 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
+		vim.lsp.config("emmylua_ls", {
+			settings = {
+				["emmylua"] = {
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+				},
+			},
+		})
 		vim.lsp.config("rust_analyzer", {
 			capabilities = {
 				experimental = {
@@ -85,16 +94,6 @@ return {
 			callback = function(args)
 				vim.lsp.codelens.refresh({ bufnr = args.buf })
 			end,
-		})
-
-		vim.api.nvim_create_autocmd("BufReadPost", {
-			pattern = "*.lua",
-			callback = function()
-				vim.defer_fn(function()
-					vim.cmd("e")
-				end, 2000)
-			end,
-			once = true,
 		})
 	end,
 }
