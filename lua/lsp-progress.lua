@@ -37,7 +37,7 @@ local progress_cache = {}
 ---@param is_end boolean
 local function show_notification(content, id, is_end)
 	Snacks.notifier.notify(content, "info", {
-		icon = "",
+		icon = " ",
 		id = id,
 		timeout = is_end and 1800 or 0,
 		title = "LSP Progress",
