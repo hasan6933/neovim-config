@@ -10,7 +10,6 @@ return {
 					},
 					diagnostics = {
 						disable = { "param-type-mismatch" },
-						globalRegex = { "" },
 					},
 				},
 			},
