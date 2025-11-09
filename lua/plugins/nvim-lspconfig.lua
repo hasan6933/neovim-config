@@ -8,6 +8,10 @@ return {
 					workspace = {
 						library = vim.api.nvim_get_runtime_file("", true),
 					},
+					diagnostics = {
+						disable = { "param-type-mismatch" },
+						globalRegex = { "" },
+					},
 				},
 			},
 		})
