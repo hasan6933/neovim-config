@@ -4,7 +4,7 @@ return {
 		require("gitsigns").setup({
 			attach_to_untracked = true,
 			current_line_blame = true,
-			numhl = false,
+			numhl = true,
 			current_line_blame_opts = {
 				virt_text = true,
 				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -12,6 +12,12 @@ return {
 				ignore_whitespace = false,
 				virt_text_priority = 100,
 				use_focus = true,
+			},
+			signs = {
+				add = { text = "⎥" },
+				change = { text = "⎥" },
+				changedelete = { text = "~" },
+				untracked = { text = "⎥" },
 			},
 		})
 	end,

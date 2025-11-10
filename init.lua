@@ -19,20 +19,13 @@ vim.o.signcolumn = "yes:2"
 vim.diagnostic.config({
 	underline = true,
 	virtual_text = {
-		hl_mode = "combine",
+		hl_mode = "blend",
 		current_line = nil,
 		prefix = "● ", -- Could be '●', '▎', 'x'
 	},
 	update_in_insert = true,
 	severity_sort = true,
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ", -- Error icon (e.g., from Nerd Fonts)
-			[vim.diagnostic.severity.WARN] = " ", -- Warning icon
-			[vim.diagnostic.severity.INFO] = " ", -- Info icon
-			[vim.diagnostic.severity.HINT] = " ", -- Hint icon
-		},
-	},
+	signs = false,
 })
 
 vim.g.markdown_fenced_languages = {

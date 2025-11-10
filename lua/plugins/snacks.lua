@@ -231,7 +231,7 @@ return {
 				debounce = 10,
 			},
 			scroll = {
-				enabled = false,
+				enabled = true,
 			},
 			statuscolumn = {
 				enabled = true,
