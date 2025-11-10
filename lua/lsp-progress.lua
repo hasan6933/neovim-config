@@ -231,22 +231,6 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	end
 end
 
----Get current progress status
----@return table<string|integer, LspProgressStatus>
-function M.get_progress_status()
-	local status = {}
-	for token, entry in pairs(progress_cache) do
-		status[token] = {
-			client = entry.server_name,
-			title = entry.title,
-			percentage = entry.percentage,
-			message = entry.message,
-			active = (entry.percentage or 0) < 100,
-		}
-	end
-	return status
-end
-
 ---Function to cleanup all progress
 function M.cleanup()
 	for token in pairs(progress_cache) do
