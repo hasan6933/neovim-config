@@ -8,11 +8,10 @@ return {
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
 
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
-	opts = {},
 	config = function()
-		require("blink-cmp").setup({
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		local opt = {
 			signature = {
 				enabled = true,
 				trigger = {
@@ -146,7 +145,8 @@ return {
 					},
 				},
 			},
-		})
+		}
+		require("blink-cmp").setup(opt)
 	end,
 
 	-- LSP servers and clients communicate which features they support through "capabilities".
