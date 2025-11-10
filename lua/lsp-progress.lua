@@ -65,8 +65,7 @@ local function extract_work_progress(message)
 		local done, total = message:match(pattern)
 		if done then
 			-- Fixed: Valid Lua syntax with proper type conversion
-			return tonumber(done), --[[@as integer]]
-				total and tonumber(total) --[[@as integer]]
+			return tonumber(done), total and tonumber(total) --[[@as integer]]
 		end
 	end
 
@@ -122,7 +121,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			if done and total then
 				cache_entry.work_done = done
 				cache_entry.total_work = total
-				cache_entry.percentage = math.min((done / total) * 100, 100)
+				cache_entry.percentage = math.min((done / total) * 100, 100) ---@as integer
 			end
 		end
 
