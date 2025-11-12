@@ -57,6 +57,7 @@ return {
 		local other_pkg = {
 			"stylua",
 			"uv",
+			"gitui",
 		}
 		local mpkgs = {}
 		table.move(lsp_pkg, 1, #lsp_pkg, 1, mpkgs)
