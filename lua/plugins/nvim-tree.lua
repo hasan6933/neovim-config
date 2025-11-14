@@ -35,7 +35,7 @@ return {
 				cursorlineopt = "both",
 				debounce_delay = 15,
 				side = "left",
-				preserve_window_proportions = true,
+				preserve_window_proportions = false,
 				number = false,
 				relativenumber = false,
 				signcolumn = "no",
