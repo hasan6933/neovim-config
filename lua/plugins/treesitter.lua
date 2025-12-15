@@ -20,5 +20,12 @@ return {
 			"markdown_inline",
 			"toml",
 		})
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = require("nvim-treesitter").get_installed(),
+			callback = function()
+				-- syntax highlighting, provided by Neovim
+				vim.treesitter.start()
+			end,
+		})
 	end,
 }
