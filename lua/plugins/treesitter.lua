@@ -21,10 +21,26 @@ return {
 			"toml",
 		})
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = require("nvim-treesitter").get_installed(),
-			callback = function()
+			pattern = {
+				"lua",
+				"rust",
+				"c",
+				"cpp",
+				"html",
+				"css",
+				"javascript",
+				"typescript",
+				"jsonc",
+				"json",
+				"json5",
+				"python",
+				"markdown",
+				"markdown_inline",
+				"toml",
+			},
+			callback = function(arg)
 				-- syntax highlighting, provided by Neovim
-				vim.treesitter.start()
+				vim.treesitter.start(arg.buf)
 			end,
 		})
 	end,
