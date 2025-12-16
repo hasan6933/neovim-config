@@ -26,10 +26,6 @@ return {
 			callback = function(arg)
 				-- syntax highlighting, provided by Neovim
 				vim.treesitter.start(arg.buf)
-				vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				vim.wo.foldmethod = "expr"
-				-- indentation, provided by nvim-treesitter
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end,
 		})
 	end,
