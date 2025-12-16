@@ -118,7 +118,7 @@ return {
 						"RainbowDelimiterGreen",
 						"RainbowDelimiterCyan",
 					},
-					refresh = 10,
+					refresh = 0,
 				},
 			},
 			input = { enabled = true, icon = " " },
