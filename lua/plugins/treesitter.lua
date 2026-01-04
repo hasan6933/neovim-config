@@ -12,7 +12,6 @@ return {
 			"css",
 			"javascript",
 			"typescript",
-			"jsonc",
 			"json",
 			"json5",
 			"python",
