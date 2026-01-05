@@ -13,6 +13,7 @@ return {
 			"javascript",
 			"typescript",
 			"json",
+			"jsdoc",
 			"json5",
 			"python",
 			"markdown",
