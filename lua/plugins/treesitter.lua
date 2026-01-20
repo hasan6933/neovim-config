@@ -19,6 +19,7 @@ return {
 			"markdown",
 			"markdown_inline",
 			"toml",
+			"java",
 		}
 
 		local ins_parser = require("nvim-treesitter.config").get_installed("parsers")
