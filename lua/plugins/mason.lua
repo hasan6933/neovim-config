@@ -57,6 +57,7 @@ return {
 
 		local other_pkg = {
 			"stylua",
+			"typstyle",
 			"uv",
 			"gitui",
 		}
