@@ -17,6 +17,7 @@ return {
 				rust = { "rustfmt" },
 				-- Conform will run the first available formatter
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				typst = { "typstyle" },
 			},
 		})
 	end,
