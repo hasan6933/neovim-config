@@ -11,6 +11,19 @@ return {
 				},
 			},
 		})
+
+		vim.lsp.config("jdtls", {
+			["jdtls"] = {
+				settings = {
+					java = {
+						compile = {
+							enable = true,
+						},
+					},
+				},
+			},
+		})
+
 		vim.lsp.config("rust_analyzer", {
 			capabilities = {
 				experimental = {
