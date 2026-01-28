@@ -23,11 +23,7 @@ return {
 				settings = {
 					initializationOptions = {
 						settings = {
-							java = {
-								autobuild = {
-									enabled = false,
-								},
-							},
+							java = {},
 						},
 					},
 				},
