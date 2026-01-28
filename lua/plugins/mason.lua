@@ -44,7 +44,7 @@ return {
 			"deno",
 			"rust-analyzer",
 			"clangd",
-			"emmylua_ls", -- will use emmylua_ls when it will become stable
+			-- "emmylua_ls", -- will use emmylua_ls when it will become stable
 			"json-lsp",
 			"css-lsp",
 			"taplo",
@@ -53,7 +53,7 @@ return {
 			"marksman",
 			"tinymist",
 			"jdtls",
-			-- "lua-language-server",
+			"lua-language-server",
 		}
 
 		local other_pkg = {

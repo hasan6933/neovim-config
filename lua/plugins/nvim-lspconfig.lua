@@ -2,23 +2,11 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
-		vim.lsp.config("emmylua_ls", {
+		vim.lsp.config("lua_ls", {
 			settings = {
-				["emmylua"] = {
+				["lua_ls"] = {
 					workspace = {
 						library = vim.api.nvim_get_runtime_file("", true),
-					},
-				},
-			},
-		})
-
-		vim.lsp.config("jdtls", {
-			["jdtls"] = {
-				settings = {
-					java = {
-						compile = {
-							enable = true,
-						},
 					},
 				},
 			},
