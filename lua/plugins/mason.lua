@@ -52,6 +52,7 @@ return {
 			"ty",
 			"marksman",
 			"tinymist",
+			"jdtls",
 			-- "lua-language-server",
 		}
 
