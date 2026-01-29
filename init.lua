@@ -34,4 +34,5 @@ vim.g.markdown_fenced_languages = {
 
 require("config.lazy")
 require("keymap")
+require("lsp-progress").setup()
 vim.loader.enable()
