@@ -1,5 +1,5 @@
 -- =================================================================
--- Enhanced LSP Progress Handler (Optimized)
+-- Enhanced LSP Progress Handler (Fixed Brackets + Duplication)
 -- =================================================================
 
 ---@class LspProgressCacheEntry
@@ -80,7 +80,7 @@ local function extract_work_progress(message)
 	return nil, nil
 end
 
----Check if message is redundant with title (handles jdtls "Indexing Indexing" issue)
+---Check if message is redundant with title (fixes jdtls "Indexing Indexing")
 ---@param title string
 ---@param message string
 ---@return boolean
@@ -89,16 +89,14 @@ local function is_message_redundant(title, message)
 		return false
 	end
 
-	-- Normalize: remove trailing dots, spaces, and ellipses for comparison
+	-- Normalize: remove trailing dots, spaces, and ellipses
 	local norm_title = title:gsub("[%.…%s]+$", "")
 	local norm_message = message:gsub("[%.…%s]+$", "")
 
-	-- Message is redundant if it equals title or is just title + punctuation
 	if norm_message == norm_title then
 		return true
 	end
 
-	-- Also check if message starts with title followed only by punctuation/spaces
 	local escaped_title = vim.pesc(norm_title)
 	if norm_message:find("^" .. escaped_title .. "[%.…%s]*$") then
 		return true
@@ -107,25 +105,43 @@ local function is_message_redundant(title, message)
 	return false
 end
 
+---Get reliable server name with fallbacks (critical fix for jdtls)
+---@param client table
+---@return string
+local function get_reliable_server_name(client)
+	-- Try client.name first (might be nil/empty for jdtls)
+	local name = client.name
+	if name and name ~= "" then
+		return name
+	end
+
+	-- Try client.server_info.name (jdtls often populates this)
+	if client.server_info and client.server_info.name and client.server_info.name ~= "" then
+		return client.server_info.name
+	end
+
+	-- Fallback to client id as last resort
+	return "LSP-" .. tostring(client.id)
+end
+
 ---Build notification content from cache entry
 ---@param cache_entry LspProgressCacheEntry
----@param server_name string
 ---@param is_end boolean
 ---@return string
-local function build_notification_content(cache_entry, server_name, is_end)
+local function build_notification_content(cache_entry, is_end)
 	local spinner = is_end and "✓ " or spinners[cache_entry.spinner_idx]
 	local percentage = math.min(cache_entry.percentage or 0, 100)
-	local components = { spinner, "[" .. server_name .. "]" }
 
-	-- Always show title if present
+	-- CRITICAL FIX: Ensure server name is NEVER empty for bracket display
+	local server_display = cache_entry.server_name ~= "" and cache_entry.server_name or "LSP"
+	local components = { spinner, "[" .. server_display .. "]" }
+
 	if cache_entry.title ~= "" then
 		table.insert(components, cache_entry.title)
 	end
 
-	-- Show work progress counts if available (most informative)
 	if cache_entry.total_work and cache_entry.total_work > 0 then
 		table.insert(components, string.format("%d/%d", cache_entry.work_done, cache_entry.total_work))
-	-- Show message only if it provides additional information
 	elseif cache_entry.message ~= "" and not is_message_redundant(cache_entry.title, cache_entry.message) then
 		table.insert(components, cache_entry.message)
 	end
@@ -146,7 +162,6 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 
 	local token = result.token
 	local progress = result.value
-	local server_name = client.name or "LSP Server"
 	local kind = progress and progress.kind
 	if not kind then
 		return
@@ -155,8 +170,10 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 	local cache_entry = progress_cache[token]
 	local notification_id = get_notification_id(token)
 
-	-- Initialize on 'begin'
+	-- Initialize on 'begin' - capture server name ONCE with robust fallbacks
 	if kind == "begin" then
+		local server_name = get_reliable_server_name(client)
+
 		cache_entry = {
 			spinner_idx = 1,
 			title = progress.title or "",
@@ -167,7 +184,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 			report_count = 0,
 			start_time = vim.uv.hrtime(),
 			client_id = ctx.client_id,
-			server_name = server_name,
+			server_name = server_name, -- Guaranteed non-empty
 		}
 		progress_cache[token] = cache_entry
 
@@ -209,7 +226,6 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 		if progress.percentage then
 			cache_entry.percentage = progress.percentage
 		else
-			-- Fallback heuristic: mix report count and elapsed time
 			local report_progress = math.min(cache_entry.report_count * 5, 50)
 			local elapsed_ms = (vim.uv.hrtime() - cache_entry.start_time) / 1e6
 			local time_progress = math.min(elapsed_ms / 600, 50)
@@ -224,8 +240,8 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 		end
 	end
 
-	-- Show notification (single unified path)
-	local content = build_notification_content(cache_entry, server_name, kind == "end")
+	-- Show notification using stored server_name (guaranteed non-empty)
+	local content = build_notification_content(cache_entry, kind == "end")
 	show_notification(content, notification_id, kind == "end")
 
 	-- Cleanup on completion
