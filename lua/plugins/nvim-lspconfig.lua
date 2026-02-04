@@ -79,5 +79,7 @@ return {
 				},
 			},
 		})
+
+		vim.lsp.codelens.enable(true)
 	end,
 }
