@@ -34,6 +34,7 @@ local function get_notification_id(token)
 end
 
 ---Show notification using Snacks notifier
+---@module "snacks"
 ---@param content string
 ---@param id string
 ---@param is_end boolean
