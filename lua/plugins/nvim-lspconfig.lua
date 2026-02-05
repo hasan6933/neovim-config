@@ -80,6 +80,12 @@ return {
 			},
 		})
 
-		vim.lsp.codelens.enable(true)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			callback = function(args)
+				vim.lsp.codelens.refresh({
+					bufnr = args.buf,
+				})
+			end,
+		})
 	end,
 }
