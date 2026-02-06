@@ -33,11 +33,11 @@ vim.keymap.set({ "n", "i", "c", "v" }, "<C-e>", function()
 	})
 end, { remap = false })
 
-vim.keymap.set({ "n", "i" }, "<C-p>", function()
+vim.keymap.set({ "n", "i" }, "<space>lp", function()
 	local lp = require("live-preview")
 	if lp.is_running() then
 		lp.close()
 	else
 		vim.cmd("LivePreview start")
 	end
-end)
+end, { nowait = true, noremap = true })
