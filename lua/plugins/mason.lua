@@ -52,7 +52,7 @@ return {
 			"tinymist",
 			"jdtls",
 			"superhtml",
-			-- "lua-language-server",
+			"emmet-ls",
 		}
 
 		local other_pkg = {
