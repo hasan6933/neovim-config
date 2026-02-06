@@ -32,12 +32,3 @@ vim.keymap.set({ "n", "i", "c", "v" }, "<C-e>", function()
 		show_empty = true,
 	})
 end, { remap = false })
-
-vim.keymap.set({ "n", "i" }, "<space>lp", function()
-	local lp = require("live-preview")
-	if lp.is_running() then
-		lp.close()
-	else
-		lp.start()
-	end
-end)
