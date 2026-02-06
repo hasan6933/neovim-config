@@ -39,8 +39,6 @@ return {
 			},
 		})
 		local lsp_pkg = {
-			"html-lsp",
-			"emmet-language-server",
 			"deno",
 			"rust-analyzer",
 			"clangd",
@@ -53,6 +51,7 @@ return {
 			"marksman",
 			"tinymist",
 			"jdtls",
+			"superhtml",
 			-- "lua-language-server",
 		}
 
