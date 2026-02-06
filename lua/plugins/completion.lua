@@ -69,7 +69,7 @@ return {
 				list = {
 					max_items = 100,
 					selection = {
-						preselect = true,
+						preselect = false,
 						auto_insert = false,
 					},
 				},
